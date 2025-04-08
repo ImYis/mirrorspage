@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LinuxMirrors提供一键更换GNU/Linux系统软件源及Docker安装脚本，支持Debian、Ubuntu、CentOS等20+发行版，自动备份源文件，智能选择最优镜像站">
+    <meta name="keywords" content="Linux更换镜像源,Docker一键安装,软件源配置,镜像站测速,多发行版支持,开源系统优化">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="assets/stylesheets/main.p2gwnwnd.min.css">
+    <title>Linux 镜像源管理工具</title>
+
+</head>
+<body>
+    
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="nav-link active" onclick="showPage('home')">首页</a>
+            <a href="#usage" class="nav-link" onclick="showPage('usage')">使用方法</a>
+            <a href="https://github.com/SuperManito/LinuxMirrors" style="color: white; text-decoration: none;">GitHub仓库</a>
+        </div>
+    </nav>
+    
+    <section id="home" class="page-section active">
+    
+    <header>
+            <div class="container">
+                <h1>GNU/Linux 更换系统软件源脚本</h1>
+                <h2>Docker 安装脚本 · 一键脚本使换源更简单</h2>
+            
+            <div class="command-box">bash <(curl -sSL https://0e.pw/main.sh)
+                <button class="copy-btn" onclick="copyCommand(this)">复制</button>
+            </div>
+
+            <div class="command-box">bash <(curl -sSL https://0e.pw/docker.sh)
+                <button class="copy-btn" onclick="copyCommand(this)">复制</button>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="features-grid">
+            <div class="feature-card">
+                <h2>轻松使用</h2>
+                <p>只需要一行命令就能直接运行，无需安装任何依赖。文档提供各种场景的解决方案，Linux 初学者也能轻松上手。</p>
+            </div>
+
+            <div class="feature-card">
+                <h2>多元软件源适配</h2>
+                <p>深入考察国内镜像站的系统适配情况，测试下载速度与IPv6兼容性。提供全网搜集的国内教育网镜像站和海外镜像站。</p>
+            </div>
+
+            <div class="feature-card">
+                <h2>零技术门槛</h2>
+                <p>无需技术背景，文档提供全面的知识储备和操作指引。包含常见问题解决方法和高级用法示例。</p>
+            </div>
+
+            <div class="feature-card">
+                <h2>广泛的系统支持</h2>
+                <p>适配众多操作系统，精准识别系统类型及版本。不支持的系统会有明确提示并无操作退出。</p>
+            </div>
+
+            <div class="feature-card">
+                <h2>高度可定制</h2>
+                <p>遵循正式应用程序规范设计，代码结构清晰易修改。支持克隆后根据需求自行定制。</p>
+            </div>
+
+            <div class="feature-card">
+                <h2>开源协议</h2>
+                <p>采用 MIT 开源协议，代码完全免费开放。传播时请在显著位置标注来源和作者。</p>
+            </div>
+        </div>
+
+        <div>
+            <h2 style="color:var(--secondary-color)">支持的操作系统</h2>
+            <table>
+                <tr><th>操作系统</th><th style="text-align: center;">适配版本</th></tr>
+<tr>
+<td><a href="https://www.debian.org" target="_blank"><img src="assets/images/icon/debian.svg" width="16" height="16" style="vertical-align: -0.35em"></a> Debian</td>
+<td style="text-align: center;"><em>8 ~ 13</em></td>
+</tr>
+<tr>
+<td><a href="https://cn.ubuntu.com" target="_blank"><img src="assets/images/icon/ubuntu.svg" width="16" height="16" style="vertical-align: -0.1em"></a> Ubuntu </td>
+<td style="text-align: center;"><em>14 ~ 24</em></td>
+</tr>
+<tr>
+<td><a href="https://www.kali.org" target="_blank"><img src="assets/images/icon/kali-linux.svg" width="16" height="16"></a> Kali Linux</td>
+<td style="text-align: center;"><em>all</em></td>
+</tr>
+<tr>
+<td><a href="https://linuxmint.com" target="_blank"><img src="assets/images/icon/linux-mint.ico" width="16" height="16" style="vertical-align: -0.2em"></a> Linux Mint</td>
+<td style="text-align: center;"><em>19 ~ 22 / LMDE 6</em></td>
+</tr>
+<tr>
+<td><a href="https://www.deepin.org" target="_blank"><img src="assets/images/icon/deepin.png" width="16" height="16" style="vertical-align: -0.25em"></a> Deepin（深度）</td>
+<td style="text-align: center;"><em>all</em></td>
+</tr>
+<tr>
+<td><a href="https://zorin.com/os" target="_blank"><img src="assets/images/icon/zorin-os.png" width="16" height="16" style="vertical-align: -0.15em"></a> Zorin OS</td>
+<td style="text-align: center;"><em>all</em></td>
+</tr>
+<tr>
+<td><a href="https://www.armbian.com" target="_blank"><img src="assets/images/icon/armbian.png" width="16" height="16" style="vertical-align: -0.2em"></a> Armbian</td>
+<td style="text-align: center;"><em>all</em></td>
+</tr>
+<tr>
+<td><a href="https://www.proxmox.com" target="_blank"><img src="assets/images/icon/proxmox.svg" width="16" height="16" style="vertical-align: -0.2em"></a> Proxmox VE</td>
+<td style="text-align: center;"><em>all</em></td>
+</tr>
+<tr>
+<td><a href="https://www.raspberrypi.com" target="_blank"><img src="assets/images/icon/raspberry-pi.png" width="16" height="16" style="vertical-align: -0.2em"></a> Raspberry Pi OS</td>
+<td style="text-align: center;"><em>all</em></td>
+</tr>
+<tr>
+<td><a href="https://access.redhat.com/products/red-hat-enterprise-linux" target="_blank"><img src="assets/images/icon/redhat.svg" width="16" height="16" style="vertical-align: -0.1em"></a> Red Hat Enterprise Linux </td>
+<td style="text-align: center;"><em>7 ~ 9</em></td>
+</tr>
+<tr>
+<td><a href="https://fedoraproject.org/zh-Hans" target="_blank"><img src="assets/images/icon/fedora.ico" width="16" height="16" style="vertical-align: -0.15em"></a> Fedora</td>
+<td style="text-align: center;"><em>30 ~ 41</em></td>
+</tr>
+<tr>
+<td><a href="https://www.centos.org" target="_blank"><img src="assets/images/icon/centos.svg" width="16" height="16" style="vertical-align: -0.1em"></a> CentOS</td>
+<td style="text-align: center;"><em>7 ~ 8 / Stream 8 ~ 10</em></td>
+</tr>
+<tr>
+<td><a href="https://rockylinux.org" target="_blank"><img src="assets/images/icon/rocky-linux.svg" width="16" height="16" style="vertical-align: -0.25em"></a> Rocky Linux</td>
+<td style="text-align: center;"><em>8 ~ 9</em></td>
+</tr>
+<tr>
+<td><a href="https://almalinux.org/zh-hans" target="_blank"><img src="assets/images/icon/almalinux.svg" width="16" height="16" style="vertical-align: -0.15em"></a> AlmaLinux</td>
+<td style="text-align: center;"><em>8 ~ 9</em></td>
+</tr>
+<tr>
+<td><a href="https://www.openeuler.org/zh" target="_blank"><img src="assets/images/icon/openeuler.ico" width="16" height="16" style="vertical-align: -0.2em"></a> openEuler（开源欧拉）</td>
+<td style="text-align: center;"><em>21 ~ 24</em></td>
+</tr>
+<tr>
+<td><a href="https://www.opencloudos.org" target="_blank"><img src="assets/images/icon/opencloudos.png" width="16" height="16" style="vertical-align: -0.25em"></a> OpenCloudOS（鸥栖）</td>
+<td style="text-align: center;"><em>8.6 ~ 9 / Stream 23</em></td>
+</tr>
+<tr>
+<td><a href="https://www.openkylin.top" target="_blank"><img src="assets/images/icon/openkylin.ico" width="16" height="16" style="vertical-align: -0.25em"></a> openKylin（开放麒麟）</td>
+<td style="text-align: center;"><em>all</em></td>
+</tr>
+<tr>
+<td><a href="https://openanolis.cn" target="_blank"><img src="assets/images/icon/anolis.png" width="16" height="16" style="vertical-align: -0.1em"></a> Anolis OS（龙蜥）</td>
+<td style="text-align: center;"><em>8 / 23</em></td>
+</tr>
+<tr>
+<td><a href="https://www.opensuse.org" target="_blank"><img src="assets/images/icon/opensuse.svg" width="16" height="16"></a> openSUSE</td>
+<td style="text-align: center;"><em>Leep 15 / Tumbleweed</em></td>
+</tr>
+<tr>
+<td><a href="https://archlinux.org" target="_blank"><img src="assets/images/icon/arch-linux.ico" width="16" height="16" style="vertical-align: -0.15em"></a> Arch Linux</td>
+<td style="text-align: center;"><em>all</em></td>
+</tr>
+<tr>
+<td><a href="https://www.alpinelinux.org" target="_blank"><img src="assets/images/icon/alpine.png" width="16" height="16" style="vertical-align: -0.15em"></a> Alpine Linux</td>
+<td style="text-align: center;"><em>v3 / edge</em></td>
+</tr>
+<tr>
+<td><a href="https://www.gentoo.org" target="_blank"><img src="assets/images/icon/gentoo.svg" width="16" height="16" style="vertical-align: -0.2em"></a> Gentoo</td>
+<td style="text-align: center;"><em>all</em></td>
+</tr>
+<tr>
+<td><a href="https://nixos.org" target="_blank"><img src="assets/images/icon/nixos.svg" width="16" height="16" style="vertical-align: -0.15em"></a> NixOS</td>
+<td style="text-align: center;"><em>19 ~ 24</em></td>
+</tr>
+            </table>
+        </div>
+    </main>
+    </section>
+
+    <!-- 使用方法页面 -->
+    <section id="usage" class="page-section">
+        <div class="container">
+            <h2>使用方法</h2>
+            
+            <div class="command-group">
+                <h3>一键执行命令</h3>
+                <div class="command-box">
+                    # 中国大陆
+                    bash <(curl -sSL https://0e.pw/main.sh)
+                    <button class="copy-btn" onclick="copyCommand(this)">复制</button>
+                </div>
+                <div class="command-box">
+                    # 境外及海外地区
+                    bash <(curl -sSL https://0e.pw/main.sh) --abroad
+                    <button class="copy-btn" onclick="copyCommand(this)">复制</button>
+                </div>
+                <div class="command-box">
+                    # 中国大陆教育网
+                    bash <(curl -sSL https://0e.pw/main.sh) --edu
+                    <button class="copy-btn">复制</button>
+                </div>
+                <!-- 其他命令区块... -->
+            </div>
+
+            <div class="faq-section">
+                <h3>常见问题</h3>
+                <div class="faq-item">
+                    <h4>关于报错 Command not found</h4>
+                    <p>此报错是因为系统没有安装 curl 软件包，下面是安装命令：</p>
+            <div class="command-box">
+                # Debian系/openKylin安装
+                apt-get install -y curl
+                <button class="copy-btn">复制</button>
+            </div>
+            <p class="toggle-btn">其他系统安装方法</p>
+            <div class="toggle-content">
+
+            <div class="command-box">
+                # RedHat系/openEuler/OpenCloudOS/Anolis OS安装
+                yum install -y curl
+                <button class="copy-btn">复制</button>
+            </div>
+            <div class="command-box">
+                # openSUSE安装
+                zypper install -y curl
+                <button class="copy-btn">复制</button>
+            </div>
+            <div class="command-box">
+                # Arch Linux安装
+                pacman -S curl
+                <button class="copy-btn">复制</button>
+            </div>
+            <div class="command-box">
+                # Alpine Linux安装
+                apk --no-cache add -f curl bash ncurses
+                <button class="copy-btn">复制</button>
+            </div>
+            <div class="command-box">
+                # Gentoo安装
+                emerge --ask curl
+                <button class="copy-btn">复制</button>
+            </div>
+            <div class="command-box">
+                # NixOS安装
+                nix-env -iA nixos.curl
+                <button class="copy-btn">复制</button>
+            </div>
+            </div>
+                    <!-- 其他FAQ内容... -->
+                </div>
+            </div>
+
+            <div class="advanced-section">
+                <h3>高级用法</h3>
+                <table class="advanced-table">
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+<th style="text-align: center;">选项值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--abroad</code></td>
+<td>使用境外以及海外软件源</td>
+<td style="text-align: center;">无</td>
+</tr>
+<tr>
+<td><code>--edu</code></td>
+<td>使用中国大陆教育网软件源</td>
+<td style="text-align: center;">无</td>
+</tr>
+<tr>
+<td><code>--source</code></td>
+<td>指定软件源地址（域名或IP）</td>
+<td style="text-align: center;"><code>地址</code></td>
+</tr>
+<tr>
+<td><code>--source-epel</code></td>
+<td>指定 EPEL 附加软件包仓库的软件源地址（域名或IP）</td>
+<td style="text-align: center;"><code>地址</code></td>
+</tr>
+<tr>
+<td><code>--source-security</code></td>
+<td>指定 Debian 系统 security 仓库的软件源地址（域名或IP）</td>
+<td style="text-align: center;"><code>地址</code></td>
+</tr>
+<tr>
+<td><code>--source-vault</code></td>
+<td>指定 CentOS / AlmaLinux 系统 vault 仓库的软件源地址（域名或IP）</td>
+<td style="text-align: center;"><code>地址</code></td>
+</tr>
+<tr>
+<td><code>--source-portage</code></td>
+<td>指定 Gentoo 系统 portage 仓库的软件源地址（域名或IP）</td>
+<td style="text-align: center;"><code>地址</code></td>
+</tr>
+<tr>
+<td><code>--source-base-system</code></td>
+<td>指定 Linux Mint / Raspberry Pi OS 底层系统的软件源地址（域名或IP）</td>
+<td style="text-align: center;"><code>地址</code></td>
+</tr>
+<tr>
+<td><code>--branch</code></td>
+<td>指定软件源仓库（路径）</td>
+<td style="text-align: center;"><code>仓库名</code></td>
+</tr>
+<tr>
+<td><code>--branch-epel</code></td>
+<td>指定 EPEL 附加软件包仓库的软件源仓库（路径）</td>
+<td style="text-align: center;"><code>仓库名</code></td>
+</tr>
+<tr>
+<td><code>--branch-security</code></td>
+<td>指定 Debian 系统 security 仓库的软件源仓库（路径）</td>
+<td style="text-align: center;"><code>仓库名</code></td>
+</tr>
+<tr>
+<td><code>--branch-vault</code></td>
+<td>指定 CentOS / AlmaLinux 系统 vault 仓库的软件源仓库（路径）</td>
+<td style="text-align: center;"><code>仓库名</code></td>
+</tr>
+<tr>
+<td><code>--branch-portage</code></td>
+<td>指定 Gentoo 系统 portage 仓库的软件源仓库（路径）</td>
+<td style="text-align: center;"><code>仓库名</code></td>
+</tr>
+<tr>
+<td><code>--branch-base-system</code></td>
+<td>指定 Linux Mint / Raspberry Pi OS 底层系统的软件源仓库（路径）</td>
+<td style="text-align: center;"><code>仓库名</code></td>
+</tr>
+<tr>
+<td><code>--codename</code></td>
+<td>指定 Debian 系 / openKylin 操作系统的版本代号</td>
+<td style="text-align: center;"><code>代号名称</code></td>
+</tr>
+<tr>
+<td><code>--protocol</code></td>
+<td>指定 WEB 协议</td>
+<td style="text-align: center;"><code>http</code> 或 <code>https</code></td>
+</tr>
+<tr>
+<td><code>--use-intranet-source</code></td>
+<td>是否优先使用内网软件源地址</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td><code>--use-official-source</code></td>
+<td>是否使用目标操作系统的官方软件源</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td><code>--install-epel</code></td>
+<td>是否安装 EPEL 附加软件包</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td><code>--backup</code></td>
+<td>是否备份原有软件源</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td><code>--upgrade-software</code></td>
+<td>是否更新软件包</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td><code>--clean-cache</code></td>
+<td>是否清理下载缓存</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td><code>--clean-screen</code></td>
+<td>是否在运行前清除屏幕上的所有内容</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td><code>--print-diff</code></td>
+<td>是否打印源文件修改前后差异</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td><code>--only-epel</code></td>
+<td>仅更换 EPEL 软件源模式</td>
+<td style="text-align: center;">无</td>
+</tr>
+<tr>
+<td><code>--ignore-backup-tips</code></td>
+<td>忽略覆盖备份提示（即不覆盖备份）</td>
+<td style="text-align: center;">无</td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td>查看帮助菜单</td>
+<td style="text-align: center;">无</td>
+</tr>
+
+            <!-- 更多选项... -->
+
+                </table>
+                
+                <h4>使用示例：</h4>
+                <div class="command-box">
+                    bash <(curl -sSL https://0e.pw/main.sh) --source mirror.example.com
+                    <button class="copy-btn" onclick="copyCommand(this)">复制</button>
+                </div>
+            </div>
+
+            <div class="advanced-section">
+                <h3>定制脚本</h3>
+                <table class="advanced-table">
+<thead>
+<tr>
+<th style="text-align: center;">变量名</th>
+<th style="text-align: center;">含义</th>
+<th style="text-align: center;">值类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>SOURCE</code></td>
+<td style="text-align: center;">指定软件源地址（域名或IP）</td>
+<td style="text-align: center;"><code>地址</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>SOURCE_EPEL</code></td>
+<td style="text-align: center;">指定 EPEL 附加软件包仓库的软件源地址（域名或IP）</td>
+<td style="text-align: center;"><code>地址</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>SOURCE_SECURITY</code></td>
+<td style="text-align: center;">指定 Debian 系统 security 仓库的软件源地址（域名或IP）</td>
+<td style="text-align: center;"><code>地址</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>SOURCE_VAULT</code></td>
+<td style="text-align: center;">指定 CentOS / AlmaLinux 系统 vault 仓库的软件源地址（域名或IP）</td>
+<td style="text-align: center;"><code>地址</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>SOURCE_PORTAGE</code></td>
+<td style="text-align: center;">指定 Gentoo 系统 portage 仓库的软件源地址（域名或IP）</td>
+<td style="text-align: center;"><code>地址</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>SOURCE_BASE_SYSTEM</code></td>
+<td style="text-align: center;">指定 Linux Mint / Raspberry Pi OS 底层系统的软件源地址（域名或IP）</td>
+<td style="text-align: center;"><code>地址</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>SOURCE_BRANCH</code></td>
+<td style="text-align: center;">指定软件源仓库（路径）</td>
+<td style="text-align: center;"><code>仓库名</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>SOURCE_EPEL_BRANCH</code></td>
+<td style="text-align: center;">指定 EPEL 附加软件包仓库的软件源仓库（路径）</td>
+<td style="text-align: center;"><code>仓库名</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>SOURCE_SECURITY_BRANCH</code></td>
+<td style="text-align: center;">指定 Debian 系统 security 仓库的软件源仓库（路径）</td>
+<td style="text-align: center;"><code>仓库名</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>SOURCE_VAULT_BRANCH</code></td>
+<td style="text-align: center;">指定 CentOS / AlmaLinux 系统 vault 仓库的软件源仓库（路径）</td>
+<td style="text-align: center;"><code>仓库名</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>SOURCE_PORTAGE_BRANCH</code></td>
+<td style="text-align: center;">指定 Gentoo 系统 portage 仓库的软件源仓库（路径）</td>
+<td style="text-align: center;"><code>仓库名</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>SOURCE_BASE_SYSTEM_BRANCH</code></td>
+<td style="text-align: center;">指定 Linux Mint / Raspberry Pi OS 底层系统的软件源仓库（路径）</td>
+<td style="text-align: center;"><code>仓库名</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>DEBIAN_CODENAME</code></td>
+<td style="text-align: center;">指定 Debian 系 / openKylin 操作系统的版本代号</td>
+<td style="text-align: center;"><code>代号名称</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>USE_OFFICIAL_SOURCE</code></td>
+<td style="text-align: center;">是否使用目标操作系统的官方软件源</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>USE_INTRANET_SOURCE</code></td>
+<td style="text-align: center;">是否优先使用内网软件源地址</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>WEB_PROTOCOL</code></td>
+<td style="text-align: center;">指定 WEB 协议</td>
+<td style="text-align: center;"><code>http</code> 或 <code>https</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>INSTALL_EPEL</code></td>
+<td style="text-align: center;">是否安装 EPEL 附加软件包</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>ONLY_EPEL</code></td>
+<td style="text-align: center;">仅更换 EPEL 软件源模式</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>BACKUP</code></td>
+<td style="text-align: center;">是否备份原有软件源</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>IGNORE_BACKUP_TIPS</code></td>
+<td style="text-align: center;">忽略覆盖备份提示（即不覆盖备份）</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>UPGRADE_SOFTWARE</code></td>
+<td style="text-align: center;">是否更新软件包</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>CLEAN_CACHE</code></td>
+<td style="text-align: center;">是否清理下载缓存</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>CLEAN_SCREEN</code></td>
+<td style="text-align: center;">是否在运行前清除屏幕上的所有内容</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>PRINT_DIFF</code></td>
+<td style="text-align: center;">是否打印源文件修改前后差异</td>
+<td style="text-align: center;"><code>true</code> 或 <code>false</code></td>
+</tr>
+</tbody>
+            </table>
+            </div>
+                <h4>使用示例：</h4>
+                <div class="command-box">
+                    部分变量存在默认值，未涉及的变量无需声明为空值（空字符串），另外如果对应功能配置不存在那么就可能会出现交互
+                </div>
+        </div>
+    </section>
+      
+            
+    <footer>
+        <div class="container">
+            <h3>意见与建议</h3>
+            <p>请提交至 Issues 或参与社区讨论，贡献代码请提交 Pull Requests 到 <a href="https://github.com/SuperManito/LinuxMirrors" title="前往仓库" style="color:inherit;" >GitHub 仓库</a>。</p>
+            <div style="margin-top:30px">
+                <h3>鸣谢名单</h3>
+                <p>开源脚本由<a href="https://github.com/SuperManito/LinuxMirrors" title="前往仓库" style="color:inherit;" >【LinuxMirrors】</a>提供</p>
+                <p>本站由<a href="https://www.006idc.cn/">
+                    <img src="assets/images/sponsor/result_local67919f56d225c.png" alt="赞助商" ></a>提供高防服务器服务</p>
+            </div>
+            <p style="margin-top:30px">© 2024 LinuxMirrors. 遵循 MIT 开源协议 </p>
+            <p style="margin-top:30px">© Copyright 2024 零零陆云计算 页面版权所有 未经授权禁止复制代码或设计</p>
+        </div>
+    </footer>
+    
+<script>
+/**
+ * 页面管理模块
+ */
+const PageManager = (() => {
+    // 页面切换动画时长（毫秒）
+    const TRANSITION_DURATION = 500;
+
+    // 初始化页面状态
+    const init = () => {
+        // 自动初始化当前页面
+        const currentPage = getCurrentPage();
+        showPage(currentPage, false);
+
+        // 事件委托处理导航点击
+        document.addEventListener('click', handleNavClick);
+
+        // 处理浏览器前进/后退
+        window.addEventListener('popstate', handlePopState);
+    };
+
+    // 获取当前页面ID
+    const getCurrentPage = () => {
+        const hash = window.location.hash.substring(1);
+        return hash || 'home';
+    };
+
+    // 显示目标页面
+    const showPage = (pageId, updateHistory = true) => {
+        // 隐藏所有页面
+        document.querySelectorAll('.page-section').forEach(section => {
+            section.classList.remove('active');
+        });
+
+        // 更新导航状态
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+
+        // 显示目标页面
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            targetPage.classList.add('active');
+            document.querySelector(`[href="#${pageId}"]`).classList.add('active');
+        }
+
+        // 更新浏览器历史
+        if (updateHistory) {
+            history.pushState({ pageId }, null, `#${pageId}`);
+        }
+
+        // 自动滚动到顶部
+        smoothScrollToTop();
+    };
+
+    // 处理导航点击事件
+    const handleNavClick = (event) => {
+        const navLink = event.target.closest('.nav-link');
+        if (!navLink) return;
+
+        event.preventDefault();
+        const pageId = navLink.getAttribute('href').substring(1);
+        showPage(pageId);
+    };
+
+    // 处理浏览器历史变化
+    const handlePopState = () => {
+        const currentPage = getCurrentPage();
+        showPage(currentPage, false);
+    };
+
+    // 平滑滚动到顶部
+    const smoothScrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    return { init };
+})();
+
+/**
+ * 复制功能模块
+ */
+const ClipboardManager = (() => {
+    // 初始化复制按钮
+const init = () => {
+        document.addEventListener('click', handleCopyClick);
+    };
+
+    // 处理复制点击事件
+const handleCopyClick = async (event) => {
+        const copyBtn = event.target.closest('.copy-btn');
+        if (!copyBtn) return;
+
+        event.preventDefault();
+        const command = sanitizeCommand(copyBtn.previousSibling.textContent);
+        
+        try {
+            await navigator.clipboard.writeText(command);
+            showCopyFeedback(copyBtn, true);
+        } catch (err) {
+            console.error('复制失败:', err);
+            showCopyFeedback(copyBtn, false);
+        }
+    };
+
+    // 清理命令格式
+const sanitizeCommand = (text) => {
+        return text
+            .replace(/\\\n/g, ' ')   // 处理换行符
+            .replace(/#.*$/gm, '')  // 移除注释
+            .trim();
+    };
+
+    // 显示复制反馈
+const showCopyFeedback = (button, success) => {
+        const originalText = button.dataset.originalText || '复制';
+        button.textContent = success ? '✅ 已复制!' : '❌ 复制失败';
+        button.dataset.originalText = originalText;
+
+        setTimeout(() => {
+            button.textContent = originalText;
+        }, 2000);
+    };
+
+    return { init };
+})();
+
+/**
+ * 折叠内容控制模块
+ */
+const AccordionManager = (() => {
+    const init = () => {
+        document.addEventListener('click', handleToggleClick);
+    };
+
+    const handleToggleClick = (event) => {
+        const toggleBtn = event.target.closest('.toggle-btn');
+        if (!toggleBtn) return;
+
+        event.preventDefault();
+        const contentId = toggleBtn.dataset.target;
+        const content = document.getElementById(contentId);
+        if (!content) return;
+
+        const isExpanded = content.style.display === 'block';
+        content.style.display = isExpanded ? 'none' : 'block';
+        toggleBtn.classList.toggle('active', !isExpanded);
+    };
+
+    return { init };
+})();
+
+// 折叠内容
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+        
+// 基础防护脚本（禁止开发者工具）
+(function() {
+            // 禁用右键菜单
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+            });
+
+            // 禁用快捷键
+            document.addEventListener('keydown', function(e) {
+                // 禁用 F12 / Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C
+                if (e.key === 'F12' || 
+                    (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+                    (e.ctrlKey && e.shiftKey && e.key === 'J') ||
+                    (e.ctrlKey && e.shiftKey && e.key === 'C')) {
+                    e.preventDefault();
+                    alert('尊重知识成果');
+                }
+            });
+
+            // 调试防护
+            let lastTime = Date.now();
+            const devtoolsCheck = () => {
+                const widthThreshold = window.outerWidth - window.innerWidth > 160;
+                const heightThreshold = window.outerHeight - window.innerHeight > 160;
+                if (widthThreshold || heightThreshold) {
+                    window.location.reload();
+                }
+                if (Date.now() - lastTime > 1000) {
+                    console.clear();
+                    lastTime = Date.now();
+                }
+            };
+            setInterval(devtoolsCheck, 1000);
+        })();
+        
+// 初始化所有模块
+document.addEventListener('DOMContentLoaded', () => {
+    PageManager.init();
+    ClipboardManager.init();
+    AccordionManager.init();
+});
+    </script>
+</body>
+</html>
